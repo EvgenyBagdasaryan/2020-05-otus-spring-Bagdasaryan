@@ -1,0 +1,5 @@
+1. Kakoi segodnia den nedeli ? * sreda
+2. Kak zovut pervogo kosmonavta? Otveti: (a) Uri Gagarin (b) Aleksei Leontiev (c) Tom Cruz? * Uri Gagarin
+3. Chto delat esli net repozitoria ? * sozdat repozitorii
+4. Skolko budet 2+2*4 ? Otveti: (a) 16 (b) 10 (c) 8 * 10
+5. Dlia chego nam nujen Spring Framwork ? * dli raboti
