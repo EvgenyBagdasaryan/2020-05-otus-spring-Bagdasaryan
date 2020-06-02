@@ -18,8 +18,9 @@ public class ChecksDaoSimple implements ChecksDao  {
         String allChecks = "";
         InputStream is = new ClassPathResource(fileName).getInputStream();
         Scanner scan = new Scanner(is);
-        while(scan.hasNextLine())
+        while(scan.hasNextLine()){
             allChecks += scan.nextLine() + System.lineSeparator();
+		}
 
         return allChecks;
     }
