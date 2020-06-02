@@ -1,7 +1,6 @@
 package ru.otus.spring.dao;
 
 import org.springframework.core.io.ClassPathResource;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;

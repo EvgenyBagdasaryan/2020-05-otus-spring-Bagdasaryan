@@ -11,8 +11,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-01-exercise</module>
-        <module>spring-01-solution</module>
+        <module>spring-01-exercise-5</module>
+        <module>spring-01-exercise-6</module>
         <module>spring-student-check</module>
     </modules>
 </project>

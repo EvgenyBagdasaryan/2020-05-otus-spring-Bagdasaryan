@@ -7,7 +7,7 @@
         <constructor-arg value="/test.txt"/>
     </bean>
 
-    <bean id="personService" class="ru.otus.spring.service.StudentCheckServiceImpl">
+    <bean id="studentCheckService" class="ru.otus.spring.service.StudentCheckServiceImpl">
         <constructor-arg ref="checksDao"/>
     </bean>
 
