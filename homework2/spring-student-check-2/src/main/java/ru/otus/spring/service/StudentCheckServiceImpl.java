@@ -1,5 +1,6 @@
 package ru.otus.spring.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.dao.ChecksDao;
 import ru.otus.spring.domain.Check;
@@ -22,5 +23,9 @@ public class StudentCheckServiceImpl implements StudentCheckService {
 
         numCheck++;
         return dao.getCheckByNum(numCheck);
+    }
+
+    public int getMinNumberSuccessValidChecks(){
+        return dao.getMinNumberSuccessValidChecks();
     }
 }

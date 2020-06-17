@@ -10,6 +10,13 @@ public class ChecksDaoSimple implements ChecksDao  {
     @Value("${filePath}")
     private String fileName;
 
+    @Value("${successfullyNumberValidChecks}")
+    private int successfullyNumberValidChecks;
+
+    public int getMinNumberSuccessValidChecks(){
+        return successfullyNumberValidChecks;
+    }
+
     public Check getCheckByNum(int numCheck) throws CheckNotFoundException{
 
         ScanningCSV csv = new ScanningCSV(fileName);

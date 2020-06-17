@@ -18,10 +18,7 @@ public class Main {
        return new PropertySourcesPlaceholderConfigurer();
    }
 
-   @Value("${successfullyNumberValidChecks}")
-   int successfullyNumberValidChecks;
-
-   public static void main(String[] args){
+    public static void main(String[] args){
 
        AnnotationConfigApplicationContext context =
                new AnnotationConfigApplicationContext(Main.class);
@@ -51,7 +48,7 @@ public class Main {
 
        System.out.println(FIO + ", vashe chislo pravilnih otvetov: " + numberValidChecks);
 
-       if(numberValidChecks > 2){
+       if(numberValidChecks > service.getMinNumberSuccessValidChecks()){
            System.out.println(FIO + ", vi uspeshno protestirovani!");
        }
        else{
