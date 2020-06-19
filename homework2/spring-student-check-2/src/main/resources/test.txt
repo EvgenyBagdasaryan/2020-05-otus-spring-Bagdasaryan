@@ -1,7 +1,0 @@
-1 *** Vvedite Familiu i Imia *** FIO
-2 *** Kak nazivaetsia raketa Ilona Maska ? Otveti: (a) "Batut" (b) "Crew Dragon" (c) "X A-12" *** b
-3 *** Kak zovut pervogo kosmonavta ? Otveti: (a) Tom Cruz (b) Aleksei Leontiev (c) Uri Gagarin *** c
-4 *** Chto delat esli net repozitoria ? *** sozdat repozitorii
-5 *** Skolko budet 2+2*4 ? Otveti: (a) 16 (b) 10 (c) 8 *** b
-6 *** Dlia chego nam nujen Spring Framework ? *** dlia raboti
-7 *** Kakoi segodnia den nedeli ? *** sreda

@@ -1,1 +1,0 @@
-Вторая домашняя работа лежит в папке 2020-05-otus-spring-Bagdasaryan/homework2/spring-student-check2
