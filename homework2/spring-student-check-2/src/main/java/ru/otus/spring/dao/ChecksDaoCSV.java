@@ -13,14 +13,22 @@ public class ChecksDaoCSV implements ChecksDao  {
     @Value("${successfullyNumberValidChecks}")
     private int successfullyNumberValidChecks;
 
+    private final Scanning scan;
+
+    public ChecksDaoCSV(Scanning scan) {
+        this.scan = scan;
+    }
+
+    @Override
     public int getMinNumberSuccessValidChecks(){
         return successfullyNumberValidChecks;
     }
 
+    @Override
     public Check getCheckByNum(int numCheck) throws CheckNotFoundException{
 
-        ScanningCSV csv = new ScanningCSV(fileName);
-        for(String oneS : csv.getScannedCSV().split("\n")){
+        scan.setFilePathName(fileName);
+        for(String oneS : scan.getScannedCSV().split("\n")){
             String[] check = oneS.split("\\*\\*\\*");
             if(numCheck == Integer.valueOf(check[0].trim())){
                 return (new Check(numCheck, check[1], check[2]));

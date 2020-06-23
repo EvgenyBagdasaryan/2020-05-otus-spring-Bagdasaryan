@@ -6,6 +6,5 @@ public interface StudentCheckService {
     Check getNextCheck();
     Check getCheckByNum(int numCheck);
     int getMinNumberSuccessValidChecks();
-    void examination();
-    String resulting();
+    String examination();
 }

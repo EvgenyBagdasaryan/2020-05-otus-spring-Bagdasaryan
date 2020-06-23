@@ -8,29 +8,34 @@ import ru.otus.spring.domain.Check;
 public class StudentCheckServiceImpl implements StudentCheckService {
 
     private final ChecksDao dao;
+    private final Examination exam;
     private String FIO;
     private int numCheck = 0;
     private int numberValidChecks;
     private Check check;
 
-    public StudentCheckServiceImpl(ChecksDao dao) {
+    public StudentCheckServiceImpl(ChecksDao dao, Examination exam) {
         this.dao = dao;
+        this.exam = exam;
     }
 
+    @Override
     public Check getCheckByNum(int numCheck){ return dao.getCheckByNum(numCheck); }
 
+    @Override
     public Check getNextCheck(){
         numCheck++;
         return dao.getCheckByNum(numCheck);
     }
 
-    public void examination(){
-        ExaminationService es;
+    @Override
+    public String examination(){
+
         do{
             check = getNextCheck();
             if(check != null){
-                es = new ExaminationService(check);
-                String phrase = es.conversation();
+                exam.setCheck(check);
+                String phrase = exam.conversation();
                 if(check.getNumCheck() == 1){
                     FIO = phrase;
                 }
@@ -41,9 +46,6 @@ public class StudentCheckServiceImpl implements StudentCheckService {
                 }
             }
         }while (check != null);
-    }
-
-    public String resulting(){
 
         String conclusion;
         if(numberValidChecks > getMinNumberSuccessValidChecks()){
@@ -56,6 +58,7 @@ public class StudentCheckServiceImpl implements StudentCheckService {
         return conclusion;
     }
 
+    @Override
     public int getMinNumberSuccessValidChecks(){
         return dao.getMinNumberSuccessValidChecks();
     }

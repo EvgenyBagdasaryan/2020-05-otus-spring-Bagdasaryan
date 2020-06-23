@@ -21,8 +21,7 @@ public class Main {
 
        StudentCheckService service = context.getBean(StudentCheckService.class);
 
-       service.examination();
-       System.out.println(service.resulting());
+       System.out.println(service.examination());
 
        context.close();
    }

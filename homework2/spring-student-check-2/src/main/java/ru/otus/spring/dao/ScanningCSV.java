@@ -1,21 +1,20 @@
 package ru.otus.spring.dao;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 
-public class ScanningCSV {
+@Repository
+public class ScanningCSV implements Scanning{
 
     private Scanner scan;
     private String allChecks = "";
     private String filePathName;
 
-    public ScanningCSV(String filePathName) {
-        this.filePathName = filePathName;
-    }
-
+    @Override
     public String getScannedCSV(){
         try{
             InputStream is = new ClassPathResource(filePathName).getInputStream();
@@ -28,5 +27,10 @@ public class ScanningCSV {
             System.out.println (ex.toString());
         }
         return allChecks;
+    }
+
+    @Override
+    public void setFilePathName(String filePathName){
+        this.filePathName = filePathName;
     }
 }

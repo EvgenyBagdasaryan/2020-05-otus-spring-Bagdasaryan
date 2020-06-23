@@ -18,12 +18,13 @@ class StudentCheckServiceImplTest {
 
     @Mock
     private ChecksDao checksDao;
+    private ExaminationService es;
 
     private StudentCheckService studentService;
 
     @BeforeEach
     void setUp() {
-        studentService = new StudentCheckServiceImpl(checksDao);
+        studentService = new StudentCheckServiceImpl(checksDao, es);
     }
 
     @Test
