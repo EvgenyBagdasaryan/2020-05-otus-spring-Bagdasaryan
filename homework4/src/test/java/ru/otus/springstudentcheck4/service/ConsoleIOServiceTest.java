@@ -13,7 +13,8 @@ import java.io.PrintStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Тестирование ConsoleIOService")
-public class ConsoleIOServiceTest {
+public class
+ConsoleIOServiceTest {
 
     @MockBean
     private Check check;
@@ -37,7 +38,6 @@ public class ConsoleIOServiceTest {
     @Test
     void shouldPrintTextToPrint1() {
         ioService.out(TEXT_TO_PRINT1);
-        Thread.sleep(1000);
         assertThat(bos.toString()).isEqualTo(TEXT_TO_PRINT1 + "\r\n");
     }
 

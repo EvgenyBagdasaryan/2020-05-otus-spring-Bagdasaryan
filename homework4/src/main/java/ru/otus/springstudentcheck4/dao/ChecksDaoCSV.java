@@ -5,8 +5,6 @@ import org.springframework.stereotype.Repository;
 import ru.otus.springstudentcheck4.configs.YamlProps;
 import ru.otus.springstudentcheck4.domain.Check;
 
-import java.util.Optional;
-
 @Repository
 public class ChecksDaoCSV implements ChecksDao  {
 

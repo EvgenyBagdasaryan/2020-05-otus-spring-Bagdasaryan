@@ -1,6 +1,5 @@
 package ru.otus.springstudentcheck4.service;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -11,11 +10,7 @@ import ru.otus.springstudentcheck4.configs.YamlProps;
 import ru.otus.springstudentcheck4.dao.ChecksDao;
 import ru.otus.springstudentcheck4.domain.Check;
 
-import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 @DisplayName("Методы сервиса проверки должны ")

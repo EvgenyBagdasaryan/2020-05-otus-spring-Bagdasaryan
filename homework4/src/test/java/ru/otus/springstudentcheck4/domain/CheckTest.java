@@ -10,9 +10,9 @@ public class CheckTest {
     @DisplayName("корректно создаётся конструктором")
     @Test
     void shouldHaveCorrectConstructor() {
-        Check check = new Check(1, "Vvedite Familiu i Imia", "FIO");
+        Check check = new Check(1, "test question", "test answer");
 
-        assertEquals("Vvedite Familiu i Imia", check.getQuestion().trim());
-        assertEquals("FIO", check.getAnswer().trim());
+        assertEquals("test question", check.getQuestion().trim());
+        assertEquals("test answer", check.getAnswer().trim());
     }
 }
