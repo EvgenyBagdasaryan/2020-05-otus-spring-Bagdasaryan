@@ -1,0 +1,6 @@
+1 *** Kak zovut detishe Ilona Maska ? Otveti: (a) "Batut" (b) "Crew Dragon" (c) "X AE A-12" *** c
+2 *** Kak zovut pervogo kosmonavta ? Otveti: (a) Tom Cruz (b) Aleksei Leontiev (c) Uri Gagarin *** c
+3 *** Chto delat esli net repozitoria ? *** sozdat repozitorii
+4 *** Skolko budet 2+2*4 ? Otveti: (a) 16 (b) 10 (c) 8 *** b
+5 *** Pod krovatiu lejit, na "A" nachinaetsia ? *** adin batinok
+6 *** Pod krovatiu lejit, na "I" nachinaetsia ? *** ischo adin batinok
