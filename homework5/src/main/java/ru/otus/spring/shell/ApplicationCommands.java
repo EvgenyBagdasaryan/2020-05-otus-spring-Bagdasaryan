@@ -109,13 +109,13 @@ public class ApplicationCommands {
         return genreService.readTableGenres();
     }
 
-    @ShellMethod(value = "Update genre in table by name", key = {"ua", "update genre by name"})
+    @ShellMethod(value = "Update genre in table by name", key = {"ug", "update genre by name"})
     @ShellMethodAvailability(value = "isCommandAvailable")
     public void updateGenre(String nameOld, String nameNew) {
         genreService.updateGenreByName(nameOld, nameNew);
     }
 
-    @ShellMethod(value = "Delete genre in table by name", key = {"da", "delete genre by name"})
+    @ShellMethod(value = "Delete genre in table by name", key = {"dg", "delete genre by name"})
     @ShellMethodAvailability(value = "isCommandAvailable")
     public void deleteGenreByName(String name) {
         genreService.deleteGenreByName(name);
