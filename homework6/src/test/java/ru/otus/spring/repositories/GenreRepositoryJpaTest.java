@@ -8,8 +8,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import ru.otus.spring.domain.Genre;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Тестирование GenreRepositoryJpaTest")
@@ -27,7 +25,7 @@ public class GenreRepositoryJpaTest {
     @Test
     void createGenre() {
         Genre genreTest = new Genre(null, "триллер");
-        genreRepo.insertByGenre(genreTest);
+        genreRepo.save(genreTest);
 
         assertThat(em.find(Genre.class, genreTest.getId()))
                 .isEqualToComparingFieldByField(genreTest);
@@ -40,7 +38,7 @@ public class GenreRepositoryJpaTest {
         em.persist(genreTest);
 
         genreTest.setName("Genre New");
-        genreRepo.insertByGenre(genreTest);
+        genreRepo.save(genreTest);
 
         assertThat(em.find(Genre.class, genreTest.getId()))
                 .isEqualToComparingFieldByField(genreTest);

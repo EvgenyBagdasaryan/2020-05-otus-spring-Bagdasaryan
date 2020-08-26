@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.otus.spring.repositories.GenreRepositoryJpa;
 import ru.otus.spring.domain.Genre;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class GenreServiceImpl implements GenreService {
@@ -16,18 +18,13 @@ public class GenreServiceImpl implements GenreService {
     @Override
     public void saveGenre(Genre genre)
     {
-        genreRepo.insertByGenre(genre);
+        genreRepo.save(genre);
     };
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
-    public String readTable(){
-
-        String resGenre = "";
-        for(Genre item : genreRepo.findAll())
-            resGenre += item.getId() + " " + item.getName() + " \n ";
-
-        return resGenre;
+    public List<Genre> readTable(){
+        return genreRepo.findAll();
     };
 
     @Transactional

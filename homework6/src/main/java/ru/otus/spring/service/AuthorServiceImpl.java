@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.otus.spring.repositories.AuthorRepositoryJpa;
 import ru.otus.spring.domain.Author;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -16,18 +18,13 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public void saveAuthor(Author author)
     {
-        authorRepo.insertByAuthor(author);
+        authorRepo.save(author);
     };
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
-    public String readTable(){
-
-        String resAuthor = "";
-        for(Author item : authorRepo.findAll())
-            resAuthor += item.getId() + " " + item.getName() + " \n ";
-
-        return resAuthor;
+    public List<Author> readTable(){
+        return authorRepo.findAll();
     };
 
     @Transactional

@@ -6,6 +6,7 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import ru.otus.spring.domain.Author;
 import ru.otus.spring.domain.Book;
+import ru.otus.spring.domain.Comment;
 import ru.otus.spring.domain.Genre;
 import ru.otus.spring.service.*;
 
@@ -22,25 +23,26 @@ public class ApplicationCommands {
     //----------- Authors
 
     @ShellMethod(value = "Create author in table", key = {"ca", "create author"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public void createAuthor(String fullName) {
         authorService.saveAuthor(new Author(null, fullName));
     }
 
     @ShellMethod(value = "Read all authors", key = {"ra", "authors table read"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
-    public String readAuthors() {
-        return authorService.readTable();
+    public String readAuthors()
+    {
+        String resAuthor = "";
+        for(Author item : authorService.readTable())
+            resAuthor += item.getId() + " " + item.getName() + " \n ";
+
+        return resAuthor;
     }
 
     @ShellMethod(value = "Update author in table", key = {"ua", "update author"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public void updateAuthor(long id, String fullName) {
         authorService.saveAuthor(new Author(id, fullName));
     }
 
     @ShellMethod(value = "Delete author in table by id", key = {"da", "delete author id"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public void deleteAuthorById(long id) {
         authorService.deleteById(id);
     }
@@ -48,7 +50,6 @@ public class ApplicationCommands {
     //----------- Books
 
     @ShellMethod(value = "Create book in table", key = {"cb", "create book"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public void createBook(String bookName, String genreName, String authorFullName) {
         bookService.saveBook( new Book(
                 null,
@@ -59,13 +60,26 @@ public class ApplicationCommands {
     }
 
     @ShellMethod(value = "Read all books", key = {"rb", "book table read"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public String readBook() {
-        return bookService.readTable();
+
+        String resBook = "";
+        for(Book item : bookService.readTable())
+            resBook += item.getId() + " " + item.getName() + " " + item.getGenre().getName() + " " + item.getAuthor().getName() + " \n";
+
+        return resBook;
+    }
+
+    @ShellMethod(value = "Read books by author", key = {"rba", "book table read by author"})
+    public String readBookByAuthor(String authorFullName) {
+
+        String resBook = "";
+        for(Book item : bookService.readTableByAuthor(new Author(null, authorFullName)))
+            resBook += item.getId() + " " + item.getName() + " " + item.getGenre().getName() + " " + item.getAuthor().getName() + " \n";
+
+        return resBook;
     }
 
     @ShellMethod(value = "Update book in table", key = {"ub", "update book"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public void updateBook(long id, String bookName, String genreName, String authorFullName) {
         bookService.saveBook( new Book(
                 id,
@@ -76,7 +90,6 @@ public class ApplicationCommands {
     }
 
     @ShellMethod(value = "Delete book in table by id", key = {"db", "delete book id"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public void deleteBookById(long id) {
         bookService.deleteById(id);
     }
@@ -85,25 +98,26 @@ public class ApplicationCommands {
     //----------- Genres
 
     @ShellMethod(value = "Create genre in table", key = {"cg", "create genre"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public void createGenre(String name) {
         genreService.saveGenre(new Genre(null, name));
     }
 
     @ShellMethod(value = "Read all genres", key = {"rg", "genre table read"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public String readGenres() {
-        return genreService.readTable();
+
+        String resGenre = "";
+        for(Genre item : genreService.readTable())
+            resGenre += item.getId() + " " + item.getName() + " \n ";
+
+        return resGenre;
     }
 
     @ShellMethod(value = "Update genre in table", key = {"ug", "update genre"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public void updateGenre(long id, String fullName) {
         genreService.saveGenre(new Genre(id, fullName));
     }
 
     @ShellMethod(value = "Delete genre in table by id", key = {"dg", "delete genre id"})
-    @ShellMethodAvailability(value = "isCommandAvailable")
     public void deleteGenreById(long id) {
         genreService.deleteById(id);
     }
@@ -116,8 +130,13 @@ public class ApplicationCommands {
     }
 
     @ShellMethod(value = "Read comments", key = {"rc", "read all comments"})
-    public void list() {
-        commentService.readTable();
+    public String list() {
+
+        String resComment = "";
+        for(Comment item : commentService.readTable())
+            resComment += item.getId() + " " + item.getComment() + " \n";
+
+        return resComment;
     }
 
     @ShellMethod(value = "Update comment", key = {"uc", "update comment"})

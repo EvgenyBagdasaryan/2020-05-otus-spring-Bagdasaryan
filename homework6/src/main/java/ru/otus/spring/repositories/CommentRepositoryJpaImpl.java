@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import ru.otus.spring.domain.Author;
 import ru.otus.spring.domain.Comment;
+import ru.otus.spring.domain.Genre;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,16 +35,6 @@ public class CommentRepositoryJpaImpl implements CommentRepositoryJpa {
         return query.getResultList();
     }
 
-    /*@Override
-    public List<Comment> findAll() {
-        return em.createQuery("select cm from Comment cm", Comment.class).getResultList();
-    }*/
-
-    /*@Override
-    public List<Comment> findAll() {
-        return em.createQuery("select cm from Comment cm", Comment.class).getResultList();
-    }    */
-
     @Override
     public Optional<Comment> findById(long id) {
         return Optional.ofNullable(em.find(Comment.class, id));
@@ -51,8 +42,8 @@ public class CommentRepositoryJpaImpl implements CommentRepositoryJpa {
 
     @Override
     public void deleteById(long id) {
-        Query query = em.createQuery("delete from Comment cm where cm.id = :id");
-        query.setParameter("id", id);
-        query.executeUpdate();
+
+        Comment comment = em.find(Comment.class, id);
+        em.remove(comment);
     }
 }

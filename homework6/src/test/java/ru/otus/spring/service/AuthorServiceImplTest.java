@@ -8,16 +8,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
-import ru.otus.spring.domain.Book;
-import ru.otus.spring.domain.Comment;
 import ru.otus.spring.repositories.AuthorRepositoryJpa;
 import ru.otus.spring.domain.Author;
 
 
-import java.util.Optional;
-
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @DisplayName("Тест сервиса AuthorServiceImpl")
 @ExtendWith(SpringExtension.class)
@@ -35,7 +30,7 @@ class AuthorServiceImplTest {
     void createAuthor() {
         Author testAuthor = new Author(null, "Клиффорд Саймак");
         authorService.saveAuthor(testAuthor);
-        verify(authorRepo).insertByAuthor(testAuthor);
+        verify(authorRepo).save(testAuthor);
     }
 
     @DisplayName("Прочитать всех авторов")
@@ -47,7 +42,7 @@ class AuthorServiceImplTest {
         authorService.saveAuthor(testAuthor1);
         authorService.saveAuthor(testAuthor2);
 
-        String allAuthors = authorService.readTable();
+        authorService.readTable();
 
         verify(authorRepo).findAll();
     }
@@ -59,9 +54,9 @@ class AuthorServiceImplTest {
         Author testAuthor1 = new Author(1L, "Клиффорд Саймак");
         Author testAuthor2 = new Author(1L, "Роджер Желязны");
         authorService.saveAuthor(testAuthor1);
-        verify(authorRepo).insertByAuthor(testAuthor1);
+        verify(authorRepo).save(testAuthor1);
         authorService.saveAuthor(testAuthor2);
-        verify(authorRepo).insertByAuthor(testAuthor2);
+        verify(authorRepo).save(testAuthor2);
     }
 
     @DisplayName("Удалить автора по идентификатору")

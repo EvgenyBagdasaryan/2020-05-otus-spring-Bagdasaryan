@@ -8,6 +8,8 @@ import ru.otus.spring.domain.Comment;
 import ru.otus.spring.repositories.BookRepositoryJpa;
 import ru.otus.spring.repositories.CommentRepositoryJpa;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -33,13 +35,8 @@ public class CommentServiceImpl implements CommentService {
 
     @Transactional(readOnly = true)
     @Override
-    public String readTable() {
-
-        String resBook = "";
-        for(Comment item : commentRepository.findAll())
-            resBook += item.getId() + " " + item.getComment() + " \n";
-
-        return resBook;
+    public List<Comment> readTable() {
+        return commentRepository.findAll();
     }
 
     @Transactional

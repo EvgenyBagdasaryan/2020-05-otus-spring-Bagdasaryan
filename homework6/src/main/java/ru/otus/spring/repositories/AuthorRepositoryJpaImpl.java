@@ -18,7 +18,7 @@ public class AuthorRepositoryJpaImpl implements AuthorRepositoryJpa  {
     private EntityManager em;
 
     @Override
-    public Author insertByAuthor(Author author) {
+    public Author save(Author author) {
         if (author.getId() == null) {
             em.persist(author);
             return author;
@@ -41,8 +41,8 @@ public class AuthorRepositoryJpaImpl implements AuthorRepositoryJpa  {
 
     @Override
     public void deleteById(long id) {
-        Query query = em.createQuery("delete from Author a where a.id = : id");
-        query.setParameter("id", id);
-        query.executeUpdate();
+
+        Author author = em.find(Author.class, id);
+        em.remove(author);
     }
 }

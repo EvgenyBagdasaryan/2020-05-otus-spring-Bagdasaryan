@@ -35,7 +35,7 @@ public class BookRepositoryJpaTest {
                 new Genre(null, "фантастика"),
                 new Author(null, "Клиффорд Саймак"));
 
-        bookRepo.insertByBook(bookTest);
+        bookRepo.save(bookTest);
 
         assertThat(em.find(Book.class, bookTest.getId()))
                 .isEqualToComparingFieldByField(bookTest);
@@ -91,7 +91,7 @@ public class BookRepositoryJpaTest {
         em.persist(bookTest);
 
         bookTest.setName("451 градус по Фаренгейту");
-        bookRepo.insertByBook(bookTest);
+        bookRepo.save(bookTest);
 
         assertThat(em.find(Book.class, bookTest.getId())).isEqualToComparingFieldByField(bookTest);
     }

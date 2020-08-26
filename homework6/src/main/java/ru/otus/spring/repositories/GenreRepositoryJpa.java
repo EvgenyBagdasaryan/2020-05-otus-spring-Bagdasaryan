@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface GenreRepositoryJpa {
 
-    Genre insertByGenre(Genre genre);
+    Genre save(Genre genre);
     List<Genre> findAll();
     Optional<Genre> findById(long id);
     void deleteById(long id);

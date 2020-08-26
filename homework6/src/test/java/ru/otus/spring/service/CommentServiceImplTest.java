@@ -28,9 +28,6 @@ class CommentServiceImplTest {
     private CommentService commentService;
 
     @MockBean
-    private IOService ioService;
-
-    @MockBean
     private BookRepositoryJpa bookRepo;
 
     @MockBean
@@ -69,7 +66,7 @@ class CommentServiceImplTest {
         when(commentRepo.findById(comment1.getId())).thenReturn(Optional.of(comment1));
         when(commentRepo.findById(comment2.getId())).thenReturn(Optional.of(comment2));
 
-        String allComments = commentService.readTable();
+        commentService.readTable();
 
         verify(commentRepo).findAll();
     }

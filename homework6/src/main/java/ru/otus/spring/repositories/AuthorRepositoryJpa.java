@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface AuthorRepositoryJpa {
 
-    Author insertByAuthor(Author author);
+    Author save(Author author);
     List<Author> findAll();
     Optional<Author> findById(long id);
     void deleteById(long id);

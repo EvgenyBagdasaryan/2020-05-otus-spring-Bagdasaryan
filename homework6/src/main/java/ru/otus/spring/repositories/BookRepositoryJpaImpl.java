@@ -3,6 +3,7 @@ package ru.otus.spring.repositories;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ru.otus.spring.domain.Book;
+import ru.otus.spring.domain.Comment;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,7 +20,7 @@ public class BookRepositoryJpaImpl implements BookRepositoryJpa  {
     private final EntityManager em;
 
     @Override
-    public Book insertByBook(Book book) {
+    public Book save(Book book) {
         if (book.getId() == null) {
             em.persist(book);
             return book;
@@ -42,8 +43,8 @@ public class BookRepositoryJpaImpl implements BookRepositoryJpa  {
 
     @Override
     public void deleteById(long id) {
-        Query query = em.createQuery("delete from Book b where b.id = :id");
-        query.setParameter("id", id);
-        query.executeUpdate();
+
+        Book book = em.find(Book.class, id);
+        em.remove(book);
     }
 }

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface BookRepositoryJpa {
 
-    Book insertByBook(Book book);
+    Book save(Book book);
 
     List<Book> findAll();
 
