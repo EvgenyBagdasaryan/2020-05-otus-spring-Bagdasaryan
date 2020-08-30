@@ -10,6 +10,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "books")
 @Data
+@NamedEntityGraph(name = "books-authors-genres-entity-graph",
+        attributeNodes = {@NamedAttributeNode("author"), @NamedAttributeNode("genre")})
 public class Book {
 
     @Id

@@ -21,12 +21,10 @@ public class BookServiceImpl implements BookService {
     public void saveBook(Book book) {
         bookRepo.save(book);
     }
-
-    @Transactional(readOnly = true)
+    
     @Override
     public List<Book> readTable() { return bookRepo.findAll();}
 
-    @Transactional(readOnly = true)
     @Override
     public List<Book> readTableByAuthor(Author author) {
 

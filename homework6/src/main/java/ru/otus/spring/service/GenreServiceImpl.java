@@ -21,7 +21,6 @@ public class GenreServiceImpl implements GenreService {
         genreRepo.save(genre);
     };
 
-    @Transactional(readOnly = true)
     @Override
     public List<Genre> readTable(){
         return genreRepo.findAll();

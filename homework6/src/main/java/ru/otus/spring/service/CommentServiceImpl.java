@@ -33,7 +33,6 @@ public class CommentServiceImpl implements CommentService {
         commentRepository.save(commentEntity);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<Comment> readTable() {
         return commentRepository.findAll();

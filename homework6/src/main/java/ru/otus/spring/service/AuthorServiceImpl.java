@@ -21,7 +21,6 @@ public class AuthorServiceImpl implements AuthorService {
         authorRepo.save(author);
     };
 
-    @Transactional(readOnly = true)
     @Override
     public List<Author> readTable(){
         return authorRepo.findAll();

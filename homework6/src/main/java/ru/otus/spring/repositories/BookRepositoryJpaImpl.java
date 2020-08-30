@@ -5,10 +5,7 @@ import org.springframework.stereotype.Repository;
 import ru.otus.spring.domain.Book;
 import ru.otus.spring.domain.Comment;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +28,11 @@ public class BookRepositoryJpaImpl implements BookRepositoryJpa  {
 
     @Override
     public List<Book> findAll() {
-        TypedQuery<Book> query = em.createQuery("select b from Book b join fetch b.author join fetch b.genre", Book.class);
+
+        EntityGraph<?> entityGraph = em.getEntityGraph("books-authors-genres-entity-graph");
+        TypedQuery<Book> query = em.createQuery("select s from Book s", Book.class);
+        query.setHint("javax.persistence.fetchgraph", entityGraph);
+
         return query.getResultList();
     }
 
