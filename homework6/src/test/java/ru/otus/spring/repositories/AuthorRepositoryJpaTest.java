@@ -25,7 +25,7 @@ public class AuthorRepositoryJpaTest {
     @DisplayName("Создать автора")
     @Test
     void createAuthor() {
-        Author testAuthor = new Author(null, "Клиффорд Саймак");
+        Author testAuthor = new Author(null, "Клиффорд Саймак", null);
         authorRepo.save(testAuthor);
         assertThat(em.find(Author.class, testAuthor.getId())).isEqualToComparingFieldByField(testAuthor);
     }
@@ -33,7 +33,7 @@ public class AuthorRepositoryJpaTest {
     @DisplayName("Обновление автора")
     @Test
     void updateAuthor() {
-        Author testAuthor = new Author(null, "Клиффорд Саймак");
+        Author testAuthor = new Author(null, "Клиффорд Саймак", null);
         em.persist(testAuthor);
 
         testAuthor.setName("Андрэ Нортон");
@@ -45,8 +45,8 @@ public class AuthorRepositoryJpaTest {
     @DisplayName("Найти всех авторов")
     @Test
     void getAll() {
-        Author testAuthor1 = new Author(null, "Клиффорд Саймак");
-        Author testAuthor2 = new Author(null, "Андрэ Нортон");
+        Author testAuthor1 = new Author(null, "Клиффорд Саймак", null);
+        Author testAuthor2 = new Author(null, "Андрэ Нортон", null);
 
         em.persist(testAuthor1);
         em.persist(testAuthor2);

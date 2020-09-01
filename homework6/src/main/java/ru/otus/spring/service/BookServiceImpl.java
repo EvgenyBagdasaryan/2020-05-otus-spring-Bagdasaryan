@@ -25,10 +25,13 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> readTable() { return bookRepo.findAll();}
 
+    @Transactional
     @Override
     public List<Book> readTableByAuthor(Author author) {
 
+        // сюда теперь приходит лист книг, в котором лежат авторы, в которых лежат книги, в которых снова лежа авторы итд :-)
         List<Book> books = bookRepo.findAll();
+
         Iterator<Book> iterator = books.iterator();
         while (iterator.hasNext()) {
             if (!author.getName().equals(iterator.next().getAuthor().getName()))

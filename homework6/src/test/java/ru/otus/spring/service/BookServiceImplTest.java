@@ -32,7 +32,7 @@ class BookServiceImplTest {
                 1L,
                 "Заповедник гоблинов",
                 new Genre(null, "фантастика"),
-                new Author(null, "Клиффорд Саймак"));
+                new Author(null, "Клиффорд Саймак", null));
 
         bookService.saveBook(bookTest);
         verify(bookRepo).save(bookTest);
@@ -46,13 +46,13 @@ class BookServiceImplTest {
                 1L,
                 "Заповедник гоблинов",
                 new Genre(null, "фантастика"),
-                new Author(null, "Клиффорд Саймак"));
+                new Author(null, "Клиффорд Саймак", null));
 
         Book bookTest2 = new Book(
                 2L,
                 "Трудно быть богом",
                 new Genre(null, "фантастика"),
-                new Author(null, "Братья Стругатские"));
+                new Author(null, "Братья Стругатские", null));
 
         Author testAuthor1 = bookTest.getAuthor();
         bookService.saveBook(bookTest);

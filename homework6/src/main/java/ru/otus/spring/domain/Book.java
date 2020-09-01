@@ -26,7 +26,8 @@ public class Book {
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    // добавил обратную связь к книгам, но легче не стало
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id")
     private Author author;
 }

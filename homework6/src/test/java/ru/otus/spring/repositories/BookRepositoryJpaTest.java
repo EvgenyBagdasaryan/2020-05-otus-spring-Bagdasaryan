@@ -33,7 +33,7 @@ public class BookRepositoryJpaTest {
                 null,
                 "Заповедник гоблинов",
                 new Genre(null, "фантастика"),
-                new Author(null, "Клиффорд Саймак"));
+                new Author(null, "Клиффорд Саймак", null));
 
         bookRepo.save(bookTest);
 
@@ -48,13 +48,13 @@ public class BookRepositoryJpaTest {
                 null,
                 "Заповедник гоблинов",
                 new Genre(null, "фантастика"),
-                new Author(null, "Клиффорд Саймак"));
+                new Author(null, "Клиффорд Саймак", null));
 
         Book bookTest2 = new Book(
                 null,
                 "Пикник на обочине",
                 new Genre(null, "фантастика"),
-                new Author(null, "Браться Стругатские"));
+                new Author(null, "Браться Стругатские", null));
 
         em.persist(bookTest1);
 
@@ -71,7 +71,7 @@ public class BookRepositoryJpaTest {
                 null,
                 "Заповедник гоблинов",
                 new Genre(null, "фантастика"),
-                new Author(null, "Клиффорд Саймак"));
+                new Author(null, "Клиффорд Саймак", null));
         em.persist(bookTest1);
         Optional<Book> optionalBook = bookRepo.findById(bookTest1.getId());
 
@@ -86,7 +86,7 @@ public class BookRepositoryJpaTest {
                 null,
                 "Пикник на обочине",
                 new Genre(null, "фантастика"),
-                new Author(null, "Браться Стругатские"));
+                new Author(null, "Браться Стругатские", null));
 
         em.persist(bookTest);
 
@@ -103,7 +103,7 @@ public class BookRepositoryJpaTest {
                 null,
                 "Пикник на обочине",
                 new Genre(null, "фантастика"),
-                new Author(null, "Браться Стругатские"));
+                new Author(null, "Браться Стругатские", null));
 
         em.persist(bookTest);
 

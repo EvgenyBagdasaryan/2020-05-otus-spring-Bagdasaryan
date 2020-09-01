@@ -28,7 +28,7 @@ class AuthorServiceImplTest {
     @DisplayName("Сохранить автора")
     @Test
     void createAuthor() {
-        Author testAuthor = new Author(null, "Клиффорд Саймак");
+        Author testAuthor = new Author(null, "Клиффорд Саймак", null);
         authorService.saveAuthor(testAuthor);
         verify(authorRepo).save(testAuthor);
     }
@@ -37,8 +37,8 @@ class AuthorServiceImplTest {
     @Test
     void readAuthors() {
 
-        Author testAuthor1 = new Author(null, "Клиффорд Саймак");
-        Author testAuthor2 = new Author(null, "Роджер Желязны");
+        Author testAuthor1 = new Author(null, "Клиффорд Саймак", null);
+        Author testAuthor2 = new Author(null, "Роджер Желязны", null);
         authorService.saveAuthor(testAuthor1);
         authorService.saveAuthor(testAuthor2);
 
@@ -51,8 +51,8 @@ class AuthorServiceImplTest {
     @Test
     void updateAuthor() {
 
-        Author testAuthor1 = new Author(1L, "Клиффорд Саймак");
-        Author testAuthor2 = new Author(1L, "Роджер Желязны");
+        Author testAuthor1 = new Author(1L, "Клиффорд Саймак", null);
+        Author testAuthor2 = new Author(1L, "Роджер Желязны", null);
         authorService.saveAuthor(testAuthor1);
         verify(authorRepo).save(testAuthor1);
         authorService.saveAuthor(testAuthor2);

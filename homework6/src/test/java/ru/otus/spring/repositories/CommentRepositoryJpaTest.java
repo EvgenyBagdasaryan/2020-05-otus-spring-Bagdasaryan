@@ -32,7 +32,7 @@ class CommentRepositoryJpaTest {
                         null,
                         "Заповедник гоблинов",
                         new Genre(null, "фантастика"),
-                        new Author(null, "Клиффорд Саймак"))) ;
+                        new Author(null, "Клиффорд Саймак", null))) ;
 
         commentRepository.save(commentTest);
 
@@ -48,13 +48,13 @@ class CommentRepositoryJpaTest {
                         null,
                         "Заповедник гоблинов",
                         new Genre(null, "фантастика"),
-                        new Author(null, "Клиффорд Саймак"))) ;
+                        new Author(null, "Клиффорд Саймак", null))) ;
         Comment commentTest2 = new Comment(null, "Отличная книга !!",
                 new Book(
                         null,
                         "Пикник на обочине",
                         new Genre(null, "фантастика"),
-                        new Author(null, "Браться Стругатские"))) ;
+                        new Author(null, "Браться Стругатские", null))) ;
 
         em.persist(commentTest1);
         em.persist(commentTest2);
@@ -71,7 +71,7 @@ class CommentRepositoryJpaTest {
                         null,
                         "Заповедник гоблинов",
                         new Genre(null, "фантастика"),
-                        new Author(null, "Клиффорд Саймак"))) ;
+                        new Author(null, "Клиффорд Саймак", null))) ;
         em.persist(commentTest);
 
         assertThat(commentRepository.findById(commentTest.getId()))
@@ -87,7 +87,7 @@ class CommentRepositoryJpaTest {
                         null,
                         "Пикник на обочине",
                         new Genre(null, "фантастика"),
-                        new Author(null, "Браться Стругатские"))) ;
+                        new Author(null, "Браться Стругатские", null))) ;
         em.persist(commentTest);
 
         commentTest.setComment("CommentNew");
@@ -105,7 +105,7 @@ class CommentRepositoryJpaTest {
                         null,
                         "Пикник на обочине",
                         new Genre(null, "фантастика"),
-                        new Author(null, "Браться Стругатские"))) ;
+                        new Author(null, "Браться Стругатские", null))) ;
         em.persist(commentTest);
         em.detach(commentTest);
 

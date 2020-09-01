@@ -24,7 +24,7 @@ public class ApplicationCommands {
 
     @ShellMethod(value = "Create author in table", key = {"ca", "create author"})
     public void createAuthor(String fullName) {
-        authorService.saveAuthor(new Author(null, fullName));
+        authorService.saveAuthor(new Author(null, fullName, null));
     }
 
     @ShellMethod(value = "Read all authors", key = {"ra", "authors table read"})
@@ -39,7 +39,7 @@ public class ApplicationCommands {
 
     @ShellMethod(value = "Update author in table", key = {"ua", "update author"})
     public void updateAuthor(long id, String fullName) {
-        authorService.saveAuthor(new Author(id, fullName));
+        authorService.saveAuthor(new Author(id, fullName, null));
     }
 
     @ShellMethod(value = "Delete author in table by id", key = {"da", "delete author id"})
@@ -55,7 +55,7 @@ public class ApplicationCommands {
                 null,
                 bookName,
                 new Genre(null, genreName),
-                new Author(null, authorFullName))
+                new Author(null, authorFullName, null))
         );
     }
 
@@ -69,11 +69,21 @@ public class ApplicationCommands {
         return resBook;
     }
 
-    @ShellMethod(value = "Read books by author", key = {"rba", "book table read by author"})
+    /*@ShellMethod(value = "Read books by author", key = {"rba", "book table read by author"})
     public String readBookByAuthor(String authorFullName) {
 
         String resBook = "";
-        for(Book item : bookService.readTableByAuthor(new Author(null, authorFullName)))
+        for(Book item : bookService.readTableByAuthor(new Author(null, authorFullName, null)))
+            resBook += item.getId() + " " + item.getName() + " " + item.getGenre().getName() + " " + item.getAuthor().getName() + " \n";
+
+        return resBook;
+    }*/
+
+    @ShellMethod(value = "Read books by id author", key = {"rba", "book table read by author id"})
+    public String readBookByAuthor(Long authorId) {
+
+        String resBook = "";
+        for(Book item : bookService.readTableByAuthor(new Author(authorId, null, null)))
             resBook += item.getId() + " " + item.getName() + " " + item.getGenre().getName() + " " + item.getAuthor().getName() + " \n";
 
         return resBook;
@@ -85,7 +95,7 @@ public class ApplicationCommands {
                 id,
                 bookName,
                 new Genre(null, genreName),
-                new Author(null, authorFullName))
+                new Author(null, authorFullName, null))
         );
     }
 

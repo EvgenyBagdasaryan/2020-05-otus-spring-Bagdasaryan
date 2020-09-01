@@ -40,7 +40,7 @@ class CommentServiceImplTest {
                 1L,
                 "Заповедник гоблинов",
                 new Genre(null, "фантастика"),
-                new Author(null, "Клиффорд Саймак"));
+                new Author(null, "Клиффорд Саймак", null));
 
         when(bookRepo.findById(bookTest.getId()))
                 .thenReturn(Optional.of(bookTest));
