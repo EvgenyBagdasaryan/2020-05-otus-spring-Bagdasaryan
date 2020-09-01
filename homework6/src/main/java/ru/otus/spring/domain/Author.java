@@ -22,6 +22,6 @@ public class Author {
     private String name;
 
     // добавил обратную связь к книгам, но легче не стало
-    @OneToMany(targetEntity = Book.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "author")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "author")
     private List<Book> books;
 }

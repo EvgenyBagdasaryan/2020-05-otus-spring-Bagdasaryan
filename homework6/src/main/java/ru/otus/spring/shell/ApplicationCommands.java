@@ -69,7 +69,7 @@ public class ApplicationCommands {
         return resBook;
     }
 
-    /*@ShellMethod(value = "Read books by author", key = {"rba", "book table read by author"})
+    @ShellMethod(value = "Read books by author", key = {"rba", "book table read by author"})
     public String readBookByAuthor(String authorFullName) {
 
         String resBook = "";
@@ -77,17 +77,17 @@ public class ApplicationCommands {
             resBook += item.getId() + " " + item.getName() + " " + item.getGenre().getName() + " " + item.getAuthor().getName() + " \n";
 
         return resBook;
-    }*/
+    }
 
-    @ShellMethod(value = "Read books by id author", key = {"rba", "book table read by author id"})
-    public String readBookByAuthor(Long authorId) {
+    /*@ShellMethod(value = "Read books by id author", key = {"rba", "book table read by author id"})
+    public String readBookByID(Long authorId) {
 
         String resBook = "";
         for(Book item : bookService.readTableByAuthor(new Author(authorId, null, null)))
             resBook += item.getId() + " " + item.getName() + " " + item.getGenre().getName() + " " + item.getAuthor().getName() + " \n";
 
         return resBook;
-    }
+    }*/
 
     @ShellMethod(value = "Update book in table", key = {"ub", "update book"})
     public void updateBook(long id, String bookName, String genreName, String authorFullName) {
