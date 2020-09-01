@@ -21,7 +21,7 @@ public class Author {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(targetEntity = Book.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "author_id")
+    // добавил обратную связь к книгам, но легче не стало
+    @OneToMany(targetEntity = Book.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "author")
     private List<Book> books;
 }
