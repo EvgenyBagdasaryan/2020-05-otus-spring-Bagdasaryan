@@ -8,5 +8,6 @@ public interface AuthorService {
 
     void saveAuthor(Author author);
     List<Author> readTable();
+    List<Author> readAuthorsByName(String name);
     void deleteById(long id);
 }

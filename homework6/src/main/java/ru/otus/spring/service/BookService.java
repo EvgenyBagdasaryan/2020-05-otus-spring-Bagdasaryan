@@ -9,6 +9,6 @@ public interface BookService {
 
     void saveBook(Book book);
     List<Book> readTable();
-    List<Book> readTableByAuthor(Author author);
+    List<Book> readTableByAuthors(List<Author> author);
     void deleteById(long id);
 }

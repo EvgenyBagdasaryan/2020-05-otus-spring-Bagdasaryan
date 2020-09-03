@@ -10,6 +10,9 @@ import ru.otus.spring.domain.Comment;
 import ru.otus.spring.domain.Genre;
 import ru.otus.spring.service.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @ShellComponent
 @RequiredArgsConstructor
 public class ApplicationCommands {
@@ -69,25 +72,18 @@ public class ApplicationCommands {
         return resBook;
     }
 
-    @ShellMethod(value = "Read books by author", key = {"rba", "book table read by author"})
+    @ShellMethod(value = "Read books by author name", key = {"rba", "books table read by author name"})
     public String readBookByAuthor(String authorFullName) {
 
+        List<Author> authors = authorService.readAuthorsByName(authorFullName);
+
         String resBook = "";
-        for(Book item : bookService.readTableByAuthor(new Author(null, authorFullName, null)))
+        for(Book item : bookService.readTableByAuthors(authors)){
             resBook += item.getId() + " " + item.getName() + " " + item.getGenre().getName() + " " + item.getAuthor().getName() + " \n";
+        }
 
         return resBook;
     }
-
-    /*@ShellMethod(value = "Read books by id author", key = {"rba", "book table read by author id"})
-    public String readBookByID(Long authorId) {
-
-        String resBook = "";
-        for(Book item : bookService.readTableByAuthor(new Author(authorId, null, null)))
-            resBook += item.getId() + " " + item.getName() + " " + item.getGenre().getName() + " " + item.getAuthor().getName() + " \n";
-
-        return resBook;
-    }*/
 
     @ShellMethod(value = "Update book in table", key = {"ub", "update book"})
     public void updateBook(long id, String bookName, String genreName, String authorFullName) {

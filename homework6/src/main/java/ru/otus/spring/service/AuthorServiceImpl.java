@@ -26,6 +26,12 @@ public class AuthorServiceImpl implements AuthorService {
         return authorRepo.findAll();
     };
 
+    @Override
+    public List<Author> readAuthorsByName(String name){
+
+        return authorRepo.findByName(name);
+    };
+
     @Transactional
     @Override
     public void deleteById(long id){

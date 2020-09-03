@@ -40,6 +40,13 @@ public class AuthorRepositoryJpaImpl implements AuthorRepositoryJpa  {
     }
 
     @Override
+    public List<Author> findByName(String name) {
+        TypedQuery<Author> query = em.createQuery("select a from Author a where a.name = :name", Author.class);
+        query.setParameter("name", name);
+        return query.getResultList();
+    }
+
+    @Override
     public void deleteById(long id) {
 
         Author author = em.find(Author.class, id);

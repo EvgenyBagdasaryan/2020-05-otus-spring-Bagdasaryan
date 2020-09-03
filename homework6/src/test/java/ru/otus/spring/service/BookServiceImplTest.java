@@ -58,7 +58,7 @@ class BookServiceImplTest {
         bookService.saveBook(bookTest);
         bookService.saveBook(bookTest2);
 
-        bookService.readTableByAuthor(testAuthor1);
+        bookService.readTable();
 
         verify(bookRepo).findAll();
     }

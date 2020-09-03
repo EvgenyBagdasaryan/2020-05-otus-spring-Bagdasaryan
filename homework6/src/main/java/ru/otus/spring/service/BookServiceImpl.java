@@ -7,7 +7,7 @@ import ru.otus.spring.domain.Author;
 import ru.otus.spring.repositories.BookRepositoryJpa;
 import ru.otus.spring.domain.Book;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -21,23 +21,20 @@ public class BookServiceImpl implements BookService {
     public void saveBook(Book book) {
         bookRepo.save(book);
     }
-    
+
     @Override
     public List<Book> readTable() { return bookRepo.findAll();}
 
-    @Transactional
     @Override
-    public List<Book> readTableByAuthor(Author author) {
+    public List<Book> readTableByAuthors(List<Author> authors) {
 
-        // сюда теперь приходит лист книг, в котором лежат авторы, в которых лежат книги, в которых снова лежа авторы итд :-)
-        List<Book> books = bookRepo.findAll();
+        List<Book> resultBookList = new ArrayList<Book>();
 
-        Iterator<Book> iterator = books.iterator();
-        while (iterator.hasNext()) {
-            if (!author.getName().equals(iterator.next().getAuthor().getName()))
-                iterator.remove();
+        for(Author author : authors) {
+            resultBookList.addAll(author.getBooks());
         }
-        return books;
+
+        return resultBookList;
     }
 
     @Transactional

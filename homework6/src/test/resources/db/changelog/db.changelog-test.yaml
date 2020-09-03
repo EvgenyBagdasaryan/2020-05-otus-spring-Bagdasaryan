@@ -1,4 +1,9 @@
 databaseChangeLog:
-- includeAll:
-    path: db/changelog/1.0/
-
+    - include:
+          file: db/changelog/1.0/2020-07-19--0001-authors.sql
+    - include:
+          file: db/changelog/1.0/2020-07-19--0001-genres.sql
+    - include:
+          file: db/changelog/1.0/2020-07-19--0001-books.sql
+    - include:
+          file: db/changelog/1.0/2020-07-19--0001-comments.sql

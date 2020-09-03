@@ -1,7 +1,8 @@
 package ru.otus.spring.domain;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,7 +10,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "authors")
 public class Author {
 
@@ -21,7 +23,6 @@ public class Author {
     @Column(name = "name")
     private String name;
 
-    // добавил обратную связь к книгам, но легче не стало
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "author")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "author")
     private List<Book> books;
 }

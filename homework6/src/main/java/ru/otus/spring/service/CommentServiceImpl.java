@@ -14,7 +14,6 @@ import java.util.List;
 @Service
 public class CommentServiceImpl implements CommentService {
 
-    private final IOService ioService;
     private final CommentRepositoryJpa commentRepository;
     private final BookRepositoryJpa bookRepository;
 
