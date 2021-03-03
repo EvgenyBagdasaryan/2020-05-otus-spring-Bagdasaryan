@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of book comments</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .comments, .comments td {
+            border: 1px solid lightgray;
+            padding: 5px;
+        }
+    </style>
+    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Comments:</h1>
+
+<!-- Comment list edition -->
+
+<h1>Book Info 1:</h1>
+
+<a th:href="@{/comment(bookId=${bookId})}">Add comment</a>
+<table class="comments">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Action</th>
+        <th>Option</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="comment : ${comments}">
+        <td th:text="${comment.id}">1</td>
+        <td th:text="${comment.name}">John Doe</td>
+        <td>
+            <a th:href="@{/comment(bookId=${bookId}, id=${comment.id})}" href="selected_comment.html">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/comments(bookId=${bookId}, id=${comment.id})}" href="list_of_comments.html">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/}" href="list_of_books.html">Go to the entire list of books</a>
+
+</body>
+</html>

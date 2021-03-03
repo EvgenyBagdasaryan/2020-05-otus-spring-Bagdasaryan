@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of book authors</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .authors, .authors td {
+            border: 1px solid lightgray;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Authors:</h1>
+
+<!-- Author list edition -->
+
+<h1>Book Info 1:</h1>
+
+<a th:href="@{/author(bookId=${bookId})}">Add author</a>
+<table class="authors">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Action</th>
+        <th>Option</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="author : ${authors}">
+        <td th:text="${author.id}">1</td>
+        <td th:text="${author.name}">John Doe</td>
+        <td>
+            <a th:href="@{/author(bookId=${bookId}, id=${author.id})}" href="selected_author.html">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/authors(bookId=${bookId}, id=${author.id})}" href="list_of_authors.html">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/}" href="list_of_books.html">Go to the entire list of books</a>
+
+</body>
+</html>

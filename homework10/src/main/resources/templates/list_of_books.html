@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of all books</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .books, .books td {
+            border: 1px solid lightgray;
+            padding: 5px;
+        }
+    </style>
+    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Books:</h1>
+
+<a th:href="@{/book}">Add book</a>
+<table class="books">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Action</th>
+        <th>Authors</th>
+        <th>Comments</th>
+        <th>Operation</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}">1</td>
+        <td th:text="${book.name}">John Doe</td>
+        <td>
+            <a th:href="@{/book(bookId=${book.id})}" href="selected_book.html">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/authors(bookId=${book.id})}" href="list_of_authors.html">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/comments(bookId=${book.id})}" href="list_of_comments.html">Edit</a>
+        </td>
+
+        <td>
+            <a th:href="@{/(bookId=${book.id})}" href="list_of_books.html">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
