@@ -1,0 +1,7 @@
+server:
+  port: 8089
+spring:
+  data:
+    mongodb:
+      port: 0
+      database: athenaeumLibrary
