@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit comment</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        input:read-only {
+            background: lightgray;
+        }
+
+        .row {
+            margin-top: 10px;
+        }
+    </style>
+    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- Comment edition -->
+<form id="edit-form" th:action="@{/comment(bookId=${bookId}, id=${comment.id})}" th:method="post" action="selected_comment.html" th:object="${comment}">
+    <h1>Comment Info 1:</h1>
+
+    <div class="row">
+        <label for="commentId-input">ID:</label>
+        <input id="commentId-input" type="text" readonly="readonly" th:value="*{id}" value="1"/>
+    </div>
+
+    <div class="row">
+        <label for="commentName-input">Name:</label>
+        <input id="commentName-input" name="name" type="text" th:value="*{name}" value="John Doe"/>
+    </div>
+
+    <div class="row">
+        <!--button type="submit">Save</button-->
+        <input type="button" value="Сохранить" id="btnAddBook"></td>
+    </div>
+</form>
+<a th:href="@{/comments(bookId=${bookId})}">Cancel</a>
+
+<script>
+
+    $(document).ready(function() {
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        var bookId =  urlParams.get('bookId');
+        var comment = {};
+        var url = "";
+        var method = "";
+        $('#btnAddBook').click(function () {
+            comment.id = $('#commentId-input').val();
+            comment.name = $('#commentName-input').val();
+            var commentObj = JSON.stringify(comment);
+            if(comment.id) {
+                url = "/api/comments/" + bookId;
+                method = 'PUT'
+            } else {
+                url = "/api/comments/" + bookId;
+                method = 'POST'
+            }
+            $.ajax({
+                url: url,
+                method: method,
+                data: commentObj,
+                contentType: 'application/json; charset=utf-8',
+                success: function () {
+                    window.location.href = window.location.origin + '/comments/?bookId=' + bookId;
+                },
+                error: function (error) {
+                }
+            })
+        });
+    });
+
+</script>
+
+</body>
+</html>
