@@ -27,28 +27,24 @@ public class BookController {
         return "books";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/addbook")
     public String addBook(Model model) {
         model.addAttribute("book", new Book(new Author(), new Genre()));
         return "edit";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/addbook")
     public String addBook(@ModelAttribute Book book) {
         bookService.addOrSaveBook(book);
         return "redirect:/";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/delete/{book}")
     public String deleteBook(@PathVariable Book book) {
         bookService.delete(book);
         return "redirect:/";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/edit/{book}")
     public String editBook(@PathVariable Book book, Model model) {
         model.addAttribute("book", book);

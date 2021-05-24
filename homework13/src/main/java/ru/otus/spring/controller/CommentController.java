@@ -20,7 +20,6 @@ public class CommentController {
     private final CommentService commentService;
     private final UserService userService;
 
-    @PreAuthorize("hasAuthority('ADMIN') or principal.username == #comment.user.username")
     @PostMapping("/delete/{comment}")
     public String deleteComment(@PathVariable Comment comment) {
         long id = comment.getBook().getId();
@@ -42,7 +41,6 @@ public class CommentController {
         return "redirect:/view/" + comment.getBook().getId();
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or principal.username == #comment.user.username")
     @GetMapping("/edit/{comment}")
     public String editComment(@PathVariable Comment comment, Model model) {
         model.addAttribute("comment", comment);

@@ -24,7 +24,7 @@ insert into comment (id,text,book_id,user_id) values(4,'Очень интере�
 
 insert into user (id,username,password) values(1,'admin','admin');
 insert into user (id,username,password) values(2,'user','user');
-insert into user (id,username,password) values(3,'user2','user');
+insert into user (id,username,password) values(3,'user2','user2');
 
 insert into user_role (user_id,roles) values (1,'ADMIN');
 insert into user_role (user_id,roles) values (2,'USER');
